@@ -7,7 +7,7 @@ module.exports = {
   devtool: "inline-source-map",
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: '[name].[contenthash].js'
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js']
@@ -21,5 +21,10 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin()
-  ]
+  ],
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    }
+  }
 }
